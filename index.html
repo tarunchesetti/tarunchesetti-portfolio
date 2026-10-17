@@ -78,6 +78,7 @@ mark{background:none;color:#fff;font-weight:700;padding:0;text-decoration:none;t
 .nowp{margin:12px;padding:12px;border-radius:14px;background:linear-gradient(135deg,#6a1fd9,#e5091e);font-size:.72rem;position:relative}
 .nowp strong{display:block;font-size:.9rem;margin:2px 0 8px}
 .prog{height:4px;border-radius:4px;background:#ffffff40;overflow:hidden}.prog i{display:block;height:100%;width:0;background:#fff;animation:pg 6s linear infinite}
+.program-actions{display:flex;gap:6px;margin-top:10px}.program-action{flex:1;min-width:0;padding:7px 5px;border:1px solid #ffffff65;border-radius:8px;background:#130e2b88;color:#fff;font:700 .62rem/1.2 inherit;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}.program-action:hover{transform:translateY(-1px);border-color:#fff}.program-action.is-active{background:#fff;color:#20102d;border-color:#fff}.program-state{font-size:.61rem;min-height:15px;margin-top:6px;color:#fff;opacity:.9}.program-action:focus-visible{outline:2px solid #fff;outline-offset:2px}
 @keyframes pg{to{width:100%}}
 .epg{flex:1;overflow:hidden;padding:0 8px;mask-image:linear-gradient(transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 8%,#000 92%,transparent)}
 .epgin{animation:epgs 16s linear infinite}
@@ -547,7 +548,7 @@ header.hero#top .lead{margin:10px 0 14px}
 <div class="mob"><div class="mob-vis rv"><span class="fb a">📱 iOS + Android</span><span class="fb b">⚡ Real-time via SSE</span><span class="fb c">🧱 Virtualized lists</span>
 <div class="phone"><div class="notch"></div><div class="scr"><div class="toast">🔔 New event starting now · tap to watch</div>
 <div class="sbar"><b>LIVE GUIDE</b><span>🔍</span></div><div class="tabs"><span>Guide</span><span>Sports</span><span>Movies</span></div>
-<div class="nowp">LIVE NOW<strong>Championship Finals</strong><div class="prog"><i></i></div></div>
+<div class="nowp">LIVE NOW<strong>Championship Finals</strong><div class="prog"><i></i></div><div class="program-actions"><button class="program-action" type="button" data-program-action="watchlist" aria-pressed="false">＋ Watchlist</button><button class="program-action" type="button" data-program-action="record" aria-pressed="false">● Record</button></div><div class="program-state" id="programState" aria-live="polite">Choose an action for this program</div></div>
 <div class="epg"><div class="epgin" id="epgin"></div></div>
 <div class="bnav"><span>🏠</span><span>📺</span><span>🔖</span><span>👤</span></div></div></div></div></div>
 <div class="stream-showcase">
@@ -672,6 +673,8 @@ d.save({filename:'Tarun_Chesetti_Resume.pdf',data:new Blob([u],{type:'applicatio
 (function(){var ch=['NEWS','SPORT','MOVIE','KIDS','MUSIC','DOCU','LIVE','COMEDY'],cl=['#e5091e','#22d3ee','#a855f7','#fbbf24','#34d399','#f472b6','#818cf8','#fb923c'],h='';
 for(var r=0;r<2;r++)ch.forEach(function(c,i){var b='';[46,70,38,60].forEach(function(w,j){var k=cl[(i+j)%8];b+='<i style="width:'+(w+((i*13+j*7)%24))+'px;background:'+k+'33;border-color:'+k+'88"></i>'});h+='<div class="er"><span style="background:'+cl[i]+'">'+c.slice(0,2)+'</span><div class="ep" style="animation-delay:-'+(i*1.3)+'s">'+b+'</div></div>'});
 $('#epgin').innerHTML=h})();
+
+(function(){var actions=all('[data-program-action]'),state=$('#programState'),selected={watchlist:false,record:false};if(!actions.length||!state)return;actions.forEach(function(btn){btn.addEventListener('click',function(){var key=btn.getAttribute('data-program-action');selected[key]=!selected[key];btn.classList.toggle('is-active',selected[key]);btn.setAttribute('aria-pressed',String(selected[key]));if(key==='watchlist')btn.textContent=selected[key]?'✓ In Watchlist':'＋ Watchlist';else btn.textContent=selected[key]?'✓ Recording Set':'● Record';var messages=[];if(selected.watchlist)messages.push('Added to Watchlist');if(selected.record)messages.push('Recording scheduled');state.textContent=messages.length?messages.join(' · '):'Choose an action for this program';});});})();
 
 var leagueGames=$('#leagueGames'),leagueTabs=all('.league-tab'),scoresSeeAll=$('#scoresSeeAll'),activeLeague='MLB',showAllScores=false;
 var scoreboardData={
