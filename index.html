@@ -271,7 +271,7 @@ footer{position:relative;z-index:1;text-align:center;color:var(--mute);padding:3
 @media(max-width:900px){.stream-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.collection-card{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:9px}.collection-card .stream-card-top{grid-column:1/-1;margin-bottom:3px}.collection-feature{margin-bottom:0}.collection-series{grid-column:1/-1}}
 @media(max-width:560px){.stream-grid{grid-template-columns:1fr}.collection-card{grid-column:auto;display:block}.collection-card .stream-card-top{display:flex}.collection-feature{margin-bottom:9px}.collection-series{margin-bottom:0}.stream-showcase{margin-top:28px}.stream-card{padding:14px}.mosaic-grid{aspect-ratio:1.6}.mosaic-tile b{font-size:.62rem}}
 
-</style>
+\n.showcase-subheading{font-size:1.35rem;margin:46px 0 20px;display:flex;align-items:center;gap:10px;color:var(--text)}.showcase-subheading::before{content:"";width:4px;height:1.1em;background:var(--red);border-radius:3px}.showcase-module{margin-top:12px}.showcase-module .cl{margin-top:0}\n</style>
 </head>
 <body>
 <div id="bar"></div><div id="glow"></div>
@@ -333,16 +333,27 @@ footer{position:relative;z-index:1;text-align:center;color:var(--mute);padding:3
       <div class="collection-feature collection-series"><div><small>YOUR NEXT BINGE</small><b>TV Shows</b><span>Series worth staying in for</span></div><span class="collection-icon">▶</span></div>
     </article>
   </div>
-</div></section>
-
-<section id="web"><h2 class="rv">React.js, in the browser</h2>
+</div>
+<div class="showcase-module">
+<h3 class="showcase-subheading rv">Day Pass subscriptions</h3>
 <div class="cl"><div class="bw rv"><div class="bar"><i></i><i></i><i></i><span>localhost:3000/passes · React DevTools</span></div>
 <div class="wbody"><div class="wapp"><div class="wn"><b>STREAMHUB</b><span>Home</span><span>Live</span><span>Sports</span></div>
 <div class="pt">Choose your pass</div><div class="pp"><div class="pc"><small>DAY</small><b>Day Pass</b><span>24 hours</span></div><div class="pc"><small>WEEKEND</small><b>Weekend Pass</b><span>Fri – Sun</span></div><div class="pc"><small>WEEK</small><b>Week Pass</b><span>7 days</span></div></div><div class="pbtn">Continue →</div></div>
 <div class="dt"><small>⚛ COMPONENTS</small><p>&lt;App&gt;</p><p style="padding-left:12px;animation-delay:1s">&lt;PassPicker&gt;</p><p style="padding-left:20px;animation-delay:2s">&lt;Pass day /&gt;</p><p style="padding-left:20px;animation-delay:3s">&lt;Pass weekend /&gt;</p><p style="padding-left:20px;animation-delay:4s">&lt;Pass week /&gt;</p><p style="padding-left:12px;animation-delay:5s">&lt;Checkout /&gt;</p></div></div></div>
 <div class="cl-t rv"><p>I build fast, modular web apps with React.js and TypeScript, and I use the browser’s own tools to keep them quick.</p>
 <ul class="mlist"><li><b>▸</b><span>React.js + TypeScript PWA for 1,000+ attendees with sub-second responses</span></li><li><b>▸</b><span>Figma-to-React parser with 95%+ visual code fidelity</span></li><li><b>▸</b><span>Modular UI framework that lifted release velocity by 20% for 2M+ users</span></li><li><b>▸</b><span>Virtualization and memoization for smooth lists and grids</span></li><li><b>▸</b><span>Contributed to the Day Pass subscription model (day, weekend and week passes), supporting a 50% increase in user base and revenue</span></li></ul>
-<div class="chips"><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Redux</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">GraphQL</span><span class="chip">Chrome DevTools</span></div></div></div></section>
+<div class="chips"><span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Redux</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">GraphQL</span><span class="chip">Chrome DevTools</span></div></div></div>
+</div>
+<div class="showcase-module">
+<h3 class="showcase-subheading rv">CanvasLab collaboration</h3>
+<div class="cl"><div class="bw rv"><div class="bar"><i></i><i></i><i></i><span>canvaslab-whiteboard.netlify.app</span></div>
+<div class="board"><svg class="ink" viewBox="0 0 400 220" preserveAspectRatio="none"><path d="M30 150C80 60 120 200 180 110S290 60 370 140"/></svg><div class="note n1">Ideas 💡</div><div class="note n2">Ship it 🚀</div><pre class="code">const board = new Canvas();
+board.share("team");</pre><span class="cur c1">Tarun</span><span class="cur c2">Guest</span></div></div>
+<div class="cl-t rv"><p>A real-time collaborative whiteboard and shared code canvas I built with the PERN stack. Draw, drop notes and code blocks, and watch teammates’ cursors move live. The preview shows the idea; the real app is one click away.</p><div class="btns"><a class="btn p" href="https://canvaslab-whiteboard.netlify.app/" target="_blank" rel="noopener">Open live app ↗</a><a class="btn s" href="https://github.com/tarunchesetti/canvaslab-pern" target="_blank" rel="noopener">View source</a></div></div></div>
+</div>
+</section>
+
+
 
 <section id="work"><h2 class="rv">Featured projects</h2>
 <div class="row">
@@ -358,11 +369,7 @@ footer{position:relative;z-index:1;text-align:center;color:var(--mute);padding:3
 <article class="poster" data-n="10" style="--g:linear-gradient(160deg,#b0805f,#5e3b28)"><small>Subscriptions</small><h3>Day, Weekend &amp; Week Passes</h3><p>Contributed to the Day Pass subscription model, giving viewers flexible short-term access without a long commitment.</p><p class="big">+50% users &amp; revenue</p><div class="chips"><span class="chip">Subscriptions</span><span class="chip">Frontend</span><span class="chip">Sling TV</span></div></article>
 </div></section>
 
-<section id="canvas"><h2 class="rv">CanvasLab, live</h2>
-<div class="cl"><div class="bw rv"><div class="bar"><i></i><i></i><i></i><span>canvaslab-whiteboard.netlify.app</span></div>
-<div class="board"><svg class="ink" viewBox="0 0 400 220" preserveAspectRatio="none"><path d="M30 150C80 60 120 200 180 110S290 60 370 140"/></svg><div class="note n1">Ideas 💡</div><div class="note n2">Ship it 🚀</div><pre class="code">const board = new Canvas();
-board.share("team");</pre><span class="cur c1">Tarun</span><span class="cur c2">Guest</span></div></div>
-<div class="cl-t rv"><p>A real-time collaborative whiteboard and shared code canvas I built with the PERN stack. Draw, drop notes and code blocks, and watch teammates’ cursors move live. The preview shows the idea; the real app is one click away.</p><div class="btns"><a class="btn p" href="https://canvaslab-whiteboard.netlify.app/" target="_blank" rel="noopener">Open live app ↗</a><a class="btn s" href="https://github.com/tarunchesetti/canvaslab-pern" target="_blank" rel="noopener">View source</a></div></div></div></section>
+
 
 <section id="exp"><h2 class="rv">Experience</h2>
 <div class="timeline">
