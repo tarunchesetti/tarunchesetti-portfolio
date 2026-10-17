@@ -35,7 +35,7 @@ h1 span{background:linear-gradient(90deg,#fff,var(--red2) 60%,var(--red));-webki
 @keyframes float{50%{transform:translateY(-8px)}}
 .wd{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(16px);animation:wd .7s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i)*55ms + .6s)}
 @keyframes wd{to{opacity:1;filter:none;transform:none}}
-mark{background:linear-gradient(90deg,var(--red),var(--red2)) 0 100%/0 2px no-repeat;color:#fff;font-weight:700;padding-bottom:2px;animation:ul 1s 2.4s forwards}
+mark{background:none;color:#fff;font-weight:700;padding:0;text-decoration:none;text-decoration-line:none}
 @keyframes ul{to{background-size:100% 2px}}
 .cta-top{position:relative;z-index:2;padding:calc(76px + env(safe-area-inset-top,0px)) 5vw 0;max-width:1200px;margin:auto}
 .cta-in{position:relative;overflow:hidden;display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:center;padding:16px 24px;border-radius:16px;border:1px solid #ffffff1c;background:linear-gradient(120deg,rgba(229,9,20,.22),rgba(21,21,28,.98) 48%,rgba(106,31,217,.22));backdrop-filter:blur(12px);box-shadow:0 12px 36px #0005;animation:ctaIn .9s cubic-bezier(.2,.8,.2,1) both}
@@ -220,7 +220,57 @@ footer{position:relative;z-index:1;text-align:center;color:var(--mute);padding:3
 .rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
 #bar{position:fixed;top:0;left:0;height:3px;background:var(--red);width:0;z-index:100}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.wd{opacity:1;filter:none;transform:none}.pin{opacity:1}mark{background-size:100% 2px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.wd{opacity:1;filter:none;transform:none}.pin{opacity:1}}
+
+/* Consistent intro keyword treatment: no animated underline */
+#lead mark{background:none!important;color:#fff;text-decoration:none!important;text-decoration-line:none!important;padding:0;animation:none!important}
+.stream-showcase{margin:38px 0 8px}
+.showcase-heading{margin-bottom:18px}
+.showcase-heading .eyebrow{font-size:.7rem;letter-spacing:.18em;font-weight:800;color:var(--red2)}
+.showcase-heading h3{font-size:clamp(1.35rem,2.4vw,1.9rem);line-height:1.2;margin:5px 0 7px}
+.showcase-heading p{margin:0;color:var(--mute);font-size:.92rem}
+.stream-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.stream-card{min-width:0;overflow:hidden;background:linear-gradient(145deg,#191922,#101015);border:1px solid #30303b;border-radius:16px;padding:16px;box-shadow:0 18px 42px #0004}
+.stream-card-top{display:flex;align-items:center;gap:8px;justify-content:space-between;font-size:.72rem;letter-spacing:.06em;margin-bottom:14px}
+.stream-card-top b{font-size:.72rem;letter-spacing:.08em}
+.stream-pill{font-size:.58rem;letter-spacing:.06em;color:#ff737a;background:#e5091420;border:1px solid #e5091445;border-radius:99px;padding:4px 7px;white-space:nowrap}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ff3745;box-shadow:0 0 10px #ff3745;flex:none}
+.mosaic-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;aspect-ratio:1.2}
+.mosaic-tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-width:0;padding:8px;border-radius:7px;overflow:hidden;background:#242431}
+.mosaic-tile::before{content:"";position:absolute;inset:0;opacity:.72;background:radial-gradient(ellipse at 70% 20%,#ffffff50,transparent 32%),linear-gradient(140deg,transparent 25%,#0008 100%)}
+.mosaic-tile::after{content:"";position:absolute;left:-15%;right:-15%;height:30%;bottom:12%;background:repeating-linear-gradient(90deg,#ffffff10 0 2px,transparent 2px 12px);transform:perspective(30px) rotateX(12deg)}
+.mosaic-tile span,.mosaic-tile b{position:relative;z-index:1}
+.mosaic-tile span{align-self:flex-start;font-size:.5rem;font-weight:900;letter-spacing:.08em;background:#e50914;padding:2px 5px;border-radius:3px}
+.mosaic-tile b{font-size:clamp(.48rem,.75vw,.64rem);letter-spacing:.05em;text-shadow:0 1px 5px #000}
+.tile-football{background:linear-gradient(145deg,#297d51,#123c30)}
+.tile-basketball{background:linear-gradient(145deg,#bd6331,#54291f)}
+.tile-racing{background:linear-gradient(145deg,#365c9c,#17213f)}
+.tile-baseball{background:linear-gradient(145deg,#7b447d,#35203e)}
+.stream-card-foot{display:flex;justify-content:space-between;gap:8px;color:var(--mute);font-size:.65rem;margin-top:12px}
+.score-row{display:flex;align-items:center;gap:6px;padding:12px 0;border-bottom:1px solid #ffffff12}
+.score-row:last-of-type{border-bottom:0}
+.team-mark{width:27px;height:27px;display:grid;place-items:center;border-radius:8px;font-size:.57rem;font-weight:900;color:#fff;flex:none;background:#343447}
+.mark-a{background:#24539b}.mark-b{background:#8a2836}.mark-c{background:#247a59}.mark-d{background:#2c4c8b}.mark-e{background:#263d73}.mark-f{background:#244f9d}
+.score-detail{display:flex;flex-direction:column;min-width:0;flex:1}
+.score-detail b{font-size:.7rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-detail small{font-size:.6rem;color:var(--mute)}
+.score-row>strong{font-size:.86rem;font-variant-numeric:tabular-nums}
+.score-sep{font-size:.65rem;color:#777787}
+.scores-caption{margin-top:8px;font-size:.64rem;color:var(--mute)}
+.scores-caption span{color:#ff4d57;margin-right:5px}
+.collection-feature{position:relative;display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:85px;margin-bottom:9px;padding:12px;border-radius:10px;overflow:hidden;background:linear-gradient(110deg,#26263a,#343452)}
+.collection-feature::after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:0;top:0;background:#ffffff0a;transform:translate(25%,-25%)}
+.collection-feature>div{display:flex;flex-direction:column;position:relative;z-index:1;min-width:0}
+.collection-feature small{font-size:.5rem;letter-spacing:.1em;color:#e6c7ff}
+.collection-feature b{font-size:1.05rem;line-height:1.25}
+.collection-feature div span{font-size:.62rem;color:#d2d2df}
+.collection-icon{font-size:1.65rem;position:relative;z-index:1;filter:drop-shadow(0 3px 8px #0007)}
+.collection-sports{background:linear-gradient(110deg,#164a3b,#24745c)}
+.collection-movies{background:linear-gradient(110deg,#522d70,#8b3d62)}
+.collection-series{background:linear-gradient(110deg,#293b70,#345b91);margin-bottom:0}
+@media(max-width:900px){.stream-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.collection-card{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:9px}.collection-card .stream-card-top{grid-column:1/-1;margin-bottom:3px}.collection-feature{margin-bottom:0}.collection-series{grid-column:1/-1}}
+@media(max-width:560px){.stream-grid{grid-template-columns:1fr}.collection-card{grid-column:auto;display:block}.collection-card .stream-card-top{display:flex}.collection-feature{margin-bottom:9px}.collection-series{margin-bottom:0}.stream-showcase{margin-top:28px}.stream-card{padding:14px}.mosaic-grid{aspect-ratio:1.6}.mosaic-tile b{font-size:.62rem}}
+
 </style>
 </head>
 <body>
@@ -255,7 +305,35 @@ footer{position:relative;z-index:1;text-align:center;color:var(--mute);padding:3
 <div class="sbar"><b>LIVE GUIDE</b><span>🔍</span></div><div class="tabs"><span>Guide</span><span>Sports</span><span>Movies</span></div>
 <div class="nowp">LIVE NOW<strong>Championship Finals</strong><div class="prog"><i></i></div></div>
 <div class="epg"><div class="epgin" id="epgin"></div></div>
-<div class="bnav"><span>🏠</span><span>📺</span><span>🔖</span><span>👤</span></div></div></div></div></div></section>
+<div class="bnav"><span>🏠</span><span>📺</span><span>🔖</span><span>👤</span></div></div></div></div></div>
+<div class="stream-showcase">
+  <div class="showcase-heading"><span class="eyebrow">STREAMING UI</span><h3>One app. Every way to watch.</h3><p>Product-style explorations inspired by live TV experiences.</p></div>
+  <div class="stream-grid">
+    <article class="stream-card mosaic-card">
+      <div class="stream-card-top"><span class="live-dot"></span><b>MOSAIC VIEW</b><span class="stream-pill">4 LIVE</span></div>
+      <div class="mosaic-grid">
+        <div class="mosaic-tile tile-football"><span>LIVE</span><b>FOOTBALL</b></div>
+        <div class="mosaic-tile tile-basketball"><span>LIVE</span><b>BASKETBALL</b></div>
+        <div class="mosaic-tile tile-racing"><span>LIVE</span><b>RACING</b></div>
+        <div class="mosaic-tile tile-baseball"><span>LIVE</span><b>BASEBALL</b></div>
+      </div>
+      <div class="stream-card-foot"><span>Quad playback</span><span>↗ Focus a feed</span></div>
+    </article>
+    <article class="stream-card scores-card">
+      <div class="stream-card-top"><b>SPORTS SCORES</b><span class="stream-pill">LIVE NOW</span></div>
+      <div class="score-row"><div class="team-mark mark-a">NY</div><div class="score-detail"><b>New York</b><small>Rangers</small></div><strong>3</strong><span class="score-sep">—</span><strong>2</strong><div class="team-mark mark-b">LA</div></div>
+      <div class="score-row"><div class="team-mark mark-c">GS</div><div class="score-detail"><b>Golden State</b><small>Warriors</small></div><strong>98</strong><span class="score-sep">—</span><strong>94</strong><div class="team-mark mark-d">LA</div></div>
+      <div class="score-row"><div class="team-mark mark-e">NY</div><div class="score-detail"><b>New York</b><small>Yankees</small></div><strong>5</strong><span class="score-sep">—</span><strong>4</strong><div class="team-mark mark-f">B</div></div>
+      <div class="scores-caption"><span>●</span> Scores and game status at a glance</div>
+    </article>
+    <article class="stream-card collection-card">
+      <div class="stream-card-top"><b>EXPLORE COLLECTIONS</b><span>VIEW ALL ↗</span></div>
+      <div class="collection-feature collection-sports"><div><small>THE ACTION</small><b>Sports</b><span>Live games & highlights</span></div><span class="collection-icon">🏆</span></div>
+      <div class="collection-feature collection-movies"><div><small>CURATED FOR YOU</small><b>Movies</b><span>Big stories, every genre</span></div><span class="collection-icon">🎬</span></div>
+      <div class="collection-feature collection-series"><div><small>YOUR NEXT BINGE</small><b>TV Shows</b><span>Series worth staying in for</span></div><span class="collection-icon">▶</span></div>
+    </article>
+  </div>
+</div></section>
 
 <section id="web"><h2 class="rv">React.js, in the browser</h2>
 <div class="cl"><div class="bw rv"><div class="bar"><i></i><i></i><i></i><span>localhost:3000/passes · React DevTools</span></div>
