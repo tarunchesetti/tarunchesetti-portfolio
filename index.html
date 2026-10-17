@@ -484,6 +484,36 @@ header.hero#top .lead{margin:10px 0 14px}
 @media(max-width:600px){#stats .stat{min-height:120px;padding:18px}#stats .stat strong{font-size:2rem}.mosaic-grid{gap:6px}.mosaic-tile.is-focused{transform:scale(1.025)}}
 @media(prefers-reduced-motion:reduce){.mosaic-tile,.mosaic-tile::before,.mosaic-tile::after,#stats .stat,#stats .stat::before,#stats .stat::after,#stats .stat strong{animation:none!important;transition:none!important}#stats .stat{opacity:1;transform:none}#stats .stat::after{display:none}}
 
+
+/* Sports scoreboard: league tabs + matchup cards */
+.scores-card{min-width:0}
+.scores-heading{align-items:center;margin-bottom:12px}
+.scores-heading>div{display:flex;flex-direction:column;gap:4px}
+.scores-kicker{font-size:.53rem;letter-spacing:.12em;color:var(--mute);font-weight:700}
+.scores-seeall{border:1px solid #e509145c;border-radius:7px;background:#e5091417;color:#ff777e;padding:7px 9px;font:inherit;font-size:.62rem;font-weight:800;white-space:nowrap;cursor:pointer;transition:background .2s,transform .2s,border-color .2s}
+.scores-seeall:hover{background:#e5091430;border-color:#ff4655;transform:translateX(2px)}
+.scores-seeall span{margin-left:3px}
+.league-tabs{display:flex;gap:5px;overflow-x:auto;padding:2px 1px 8px;margin-bottom:4px;scrollbar-width:thin;scrollbar-color:#454552 transparent}
+.league-tab{flex:1;min-width:38px;border:1px solid #ffffff13;background:#ffffff06;color:#a9a9b7;border-radius:7px;padding:7px 5px;font-size:.61rem;font-weight:900;letter-spacing:.04em;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.league-tab:hover{color:#fff;border-color:#ffffff38;transform:translateY(-1px)}
+.league-tab.active{background:linear-gradient(135deg,#e50914,#a80710);border-color:#ff5962;color:#fff;box-shadow:0 4px 14px #e5091438}
+.league-games{display:grid;gap:8px}
+.league-game{position:relative;padding:9px 10px;border:1px solid #ffffff12;border-radius:9px;background:linear-gradient(110deg,#ffffff08,#ffffff03);animation:scoreCardIn .28s ease both;min-width:0}
+.league-game-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px;color:#a6a6b5;font-size:.52rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.game-status{color:#ff6c75;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.game-status::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 7px currentColor}
+.game-teams{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;align-items:center}
+.game-team{display:flex;align-items:center;gap:7px;min-width:0}
+.game-team .team-mark{width:25px;height:25px;border-radius:7px;font-size:.53rem;box-shadow:inset 0 1px 0 #ffffff24}
+.game-team-name{font-size:.67rem;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#ededf3}
+.game-team.home .game-team-name::after{content:" · H";font-size:.5rem;color:#888897;font-weight:600}
+.game-score{grid-column:2;grid-row:1/span 2;display:flex;align-items:center;gap:7px;font-size:.85rem;font-weight:900;font-variant-numeric:tabular-nums}
+.game-score .score-sep{color:#666675;font-weight:500}
+.league-game[hidden]{display:none}
+@keyframes scoreCardIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){.league-tabs{gap:4px}.league-tab{min-width:34px;padding:7px 4px}.scores-seeall{padding:7px}.league-game{padding:9px}.game-team-name{font-size:.64rem}}
+@media(prefers-reduced-motion:reduce){.league-game,.league-tab,.scores-seeall{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -533,12 +563,17 @@ header.hero#top .lead{margin:10px 0 14px}
       </div>
       <div class="stream-card-foot"><span>Quad playback</span><span>↗ Focus a feed</span></div>
     </article>
-    <article class="stream-card scores-card">
-      <div class="stream-card-top"><b>SPORTS SCORES</b><span class="stream-pill">LIVE NOW</span></div>
-      <div class="score-row"><div class="team-mark mark-a">NY</div><div class="score-detail"><b>New York</b><small>Rangers</small></div><strong>3</strong><span class="score-sep">—</span><strong>2</strong><div class="team-mark mark-b">LA</div></div>
-      <div class="score-row"><div class="team-mark mark-c">GS</div><div class="score-detail"><b>Golden State</b><small>Warriors</small></div><strong>98</strong><span class="score-sep">—</span><strong>94</strong><div class="team-mark mark-d">LA</div></div>
-      <div class="score-row"><div class="team-mark mark-e">NY</div><div class="score-detail"><b>New York</b><small>Yankees</small></div><strong>5</strong><span class="score-sep">—</span><strong>4</strong><div class="team-mark mark-f">B</div></div>
-      <div class="scores-caption"><span>●</span> Scores and game status at a glance</div>
+    <article class="stream-card scores-card" id="sports-scores">
+      <div class="stream-card-top scores-heading"><div><b>SPORTS SCORES</b><small class="scores-kicker">CHOOSE YOUR LEAGUE</small></div><button class="scores-seeall" id="scoresSeeAll" type="button" aria-expanded="false">See all <span>↗</span></button></div>
+      <div class="league-tabs" role="tablist" aria-label="Sports leagues">
+        <button class="league-tab active" type="button" role="tab" aria-selected="true" data-league="MLB">MLB</button>
+        <button class="league-tab" type="button" role="tab" aria-selected="false" data-league="NFL">NFL</button>
+        <button class="league-tab" type="button" role="tab" aria-selected="false" data-league="NBA">NBA</button>
+        <button class="league-tab" type="button" role="tab" aria-selected="false" data-league="NHL">NHL</button>
+        <button class="league-tab" type="button" role="tab" aria-selected="false" data-league="MLS">MLS</button>
+      </div>
+      <div class="league-games" id="leagueGames" aria-live="polite"></div>
+      <div class="scores-caption"><span>●</span> Illustrative scoreboard UI · sample scores, not live data</div>
     </article>
     <article class="stream-card collection-card">
       <div class="stream-card-top"><b>EXPLORE COLLECTIONS</b><span>VIEW ALL ↗</span></div>
@@ -637,6 +672,29 @@ d.save({filename:'Tarun_Chesetti_Resume.pdf',data:new Blob([u],{type:'applicatio
 (function(){var ch=['NEWS','SPORT','MOVIE','KIDS','MUSIC','DOCU','LIVE','COMEDY'],cl=['#e5091e','#22d3ee','#a855f7','#fbbf24','#34d399','#f472b6','#818cf8','#fb923c'],h='';
 for(var r=0;r<2;r++)ch.forEach(function(c,i){var b='';[46,70,38,60].forEach(function(w,j){var k=cl[(i+j)%8];b+='<i style="width:'+(w+((i*13+j*7)%24))+'px;background:'+k+'33;border-color:'+k+'88"></i>'});h+='<div class="er"><span style="background:'+cl[i]+'">'+c.slice(0,2)+'</span><div class="ep" style="animation-delay:-'+(i*1.3)+'s">'+b+'</div></div>'});
 $('#epgin').innerHTML=h})();
+
+var leagueGames=$('#leagueGames'),leagueTabs=all('.league-tab'),scoresSeeAll=$('#scoresSeeAll'),activeLeague='MLB',showAllScores=false;
+var scoreboardData={
+ MLB:[['NYY','Yankees',4,'BOS','Red Sox',2,'FINAL','mark-a','mark-b'],['LAD','Dodgers',3,'SD','Padres',3,'7TH INNING','mark-d','mark-c'],['CHC','Cubs',6,'STL','Cardinals',2,'FINAL','mark-e','mark-f'],['SF','Giants',1,'NYM','Mets',0,'4TH INNING','mark-c','mark-a']],
+ NFL:[['KC','Chiefs',24,'BUF','Bills',21,'FINAL','mark-a','mark-b'],['PHI','Eagles',17,'DAL','Cowboys',14,'3RD QUARTER','mark-c','mark-d'],['SF','49ers',28,'SEA','Seahawks',20,'FINAL','mark-e','mark-f'],['GB','Packers',10,'CHI','Bears',13,'2ND QUARTER','mark-c','mark-a']],
+ NBA:[['GSW','Warriors',108,'LAL','Lakers',102,'4TH QUARTER','mark-c','mark-b'],['BOS','Celtics',112,'NYK','Knicks',105,'FINAL','mark-a','mark-d'],['MIA','Heat',89,'CHI','Bulls',91,'3RD QUARTER','mark-e','mark-f'],['PHX','Suns',101,'DAL','Mavericks',99,'4TH QUARTER','mark-b','mark-c']],
+ NHL:[['NYR','Rangers',3,'BOS','Bruins',2,'3RD PERIOD','mark-a','mark-b'],['TOR','Maple Leafs',4,'MTL','Canadiens',1,'FINAL','mark-c','mark-d'],['EDM','Oilers',2,'VAN','Canucks',2,'2ND PERIOD','mark-e','mark-f'],['LA','Kings',1,'VGK','Golden Knights',0,'1ST PERIOD','mark-b','mark-a']],
+ MLS:[['LAFC','LAFC',2,'SEA','Sounders',1,'2ND HALF','mark-a','mark-c'],['MIA','Inter Miami',3,'ATL','Atlanta United',2,'FINAL','mark-b','mark-d'],['NYC','NYCFC',1,'ORL','Orlando City',1,'2ND HALF','mark-e','mark-f'],['CLB','Columbus Crew',0,'CHI','Chicago Fire',0,'1ST HALF','mark-c','mark-a']]
+};
+function renderScoreboard(){
+ if(!leagueGames)return;
+ leagueGames.innerHTML='';
+ (scoreboardData[activeLeague]||[]).forEach(function(g,i){
+  var card=document.createElement('div');card.className='league-game';if(!showAllScores&&i>=2)card.hidden=true;
+  card.innerHTML='<div class="league-game-top"><span>'+activeLeague+' · MATCHUP '+(i+1)+'</span><span class="game-status">'+g[6]+'</span></div><div class="game-teams"><div class="game-team"><span class="team-mark '+g[7]+'">'+g[0]+'</span><span class="game-team-name">'+g[1]+'</span></div><div class="game-score"><span>'+g[2]+'</span><span class="score-sep">—</span><span>'+g[5]+'</span></div><div class="game-team home"><span class="team-mark '+g[8]+'">'+g[3]+'</span><span class="game-team-name">'+g[4]+'</span></div></div>';
+  leagueGames.appendChild(card);
+ });
+ if(scoresSeeAll){scoresSeeAll.innerHTML=showAllScores?'Show less <span>↑</span>':'See all <span>↗</span>';scoresSeeAll.setAttribute('aria-expanded',String(showAllScores));}
+}
+leagueTabs.forEach(function(tab){tab.addEventListener('click',function(){activeLeague=tab.dataset.league;showAllScores=false;leagueTabs.forEach(function(t){var selected=t===tab;t.classList.toggle('active',selected);t.setAttribute('aria-selected',String(selected))});renderScoreboard();});});
+if(scoresSeeAll)scoresSeeAll.addEventListener('click',function(){showAllScores=!showAllScores;renderScoreboard();});
+renderScoreboard();
+
 var mosaicTiles=all('.mosaic-tile'),mosaicFocus=0,mosaicTimer=null;
 if(mosaicTiles.length){
   mosaicTiles.forEach(function(tile,i){tile.setAttribute('aria-label',tile.textContent.trim()+' playback feed');tile.setAttribute('aria-live','off');});
