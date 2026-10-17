@@ -339,6 +339,49 @@ header.hero#top>.spotlight-card{margin-top:0}
   #exp .item{padding:22px 19px}
 }
 
+
+/* Consistent component spacing across desktop and mobile */
+section:not(#top){padding-top:46px;padding-bottom:46px}
+section:not(#top)>h2{margin:0 0 16px}
+section:not(#top)>h2+*{margin-top:0}
+section:not(#top) .stats,
+section:not(#top) .cols,
+section:not(#top) .ach,
+section:not(#top) .stream-grid{gap:12px}
+section:not(#top) .timeline{gap:14px}
+section:not(#top) .showcase-subheading{margin:24px 0 12px}
+section:not(#top) .showcase-module{margin-top:10px}
+section:not(#top) .showcase-links{margin:14px 0 22px}
+section:not(#top) .mob-vis{margin-bottom:20px}
+section:not(#top) .row{column-gap:12px;padding-top:4px;padding-bottom:0}
+section:not(#top) .poster{margin-bottom:10px}
+.cta-top{padding-bottom:0}
+header.hero#top{padding-bottom:24px}
+header.hero#top>.spotlight-card{gap:12px}
+header.hero#top .tag{margin-bottom:8px}
+header.hero#top h1{margin:8px 0 12px}
+header.hero#top .lead{margin:10px 0 14px}
+@media(max-width:760px){
+  section:not(#top){padding-top:30px;padding-bottom:30px}
+  section:not(#top)>h2{margin-bottom:12px}
+  section:not(#top) .stats,
+  section:not(#top) .cols,
+  section:not(#top) .ach,
+  section:not(#top) .stream-grid{gap:10px}
+  section:not(#top) .timeline{gap:12px}
+  section:not(#top) .showcase-subheading{margin:20px 0 10px}
+  section:not(#top) .showcase-module{margin-top:8px}
+  section:not(#top) .showcase-links{margin:12px 0 18px}
+  section:not(#top) .mob-vis{margin-bottom:16px}
+  section:not(#top) .row{column-gap:10px}
+  section:not(#top) .poster{margin-bottom:9px}
+  header.hero#top{padding-top:14px;padding-bottom:20px}
+  header.hero#top>.spotlight-card{gap:12px;padding:22px 18px}
+  header.hero#top .tag{margin-bottom:6px}
+  header.hero#top h1{margin:6px 0 10px}
+  header.hero#top .lead{margin:8px 0 12px;line-height:1.65}
+}
+
 </style>
 </head>
 <body>
