@@ -382,6 +382,72 @@ header.hero#top .lead{margin:10px 0 14px}
   header.hero#top .lead{margin:8px 0 12px;line-height:1.65}
 }
 
+
+/* Tech stack: alternating slide-in cards with a distinct neon-console look */
+#skills .cols{align-items:stretch;gap:14px}
+#skills .cols .card{
+  position:relative;isolation:isolate;overflow:hidden;min-height:132px;
+  padding:22px 20px;border:1px solid #38d9ff35;border-radius:16px;
+  background:linear-gradient(135deg,#111f2c 0%,#15151f 58%,#21152b 100%);
+  box-shadow:inset 0 1px #ffffff0a,0 14px 30px #0003;
+  transition:opacity .75s ease,transform .75s cubic-bezier(.2,.75,.25,1),border-color .3s,box-shadow .3s,background .3s;
+}
+#skills .cols .card:nth-child(odd){opacity:0;transform:translateX(-72px) rotate(-1.5deg)}
+#skills .cols .card:nth-child(even){opacity:0;transform:translateX(72px) rotate(1.5deg)}
+#skills .cols .card.rv.in{opacity:1;transform:translateX(0) rotate(0)}
+#skills .cols .card::before{content:"";position:absolute;z-index:-1;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#25d9f8,#8b5cf6,transparent);opacity:.9}
+#skills .cols .card::after{content:"";position:absolute;right:-30px;bottom:-48px;width:110px;height:110px;border-radius:50%;background:#38d9ff12;filter:blur(2px);pointer-events:none}
+#skills .cols .card:nth-child(2n)::before{background:linear-gradient(90deg,#ff5478,#ffb454,transparent)}
+#skills .cols .card:nth-child(3n)::before{background:linear-gradient(90deg,#a78bfa,#38d9ff,transparent)}
+#skills .cols .card h4{display:flex;align-items:center;gap:9px;margin:0 0 13px;font-size:.83rem;letter-spacing:.12em;text-transform:uppercase;color:#8ceaff}
+#skills .cols .card h4::before{content:"";width:8px;height:8px;flex:none;border-radius:2px;background:#38d9ff;box-shadow:0 0 12px #38d9ff99;transform:rotate(45deg)}
+#skills .cols .card:nth-child(2n) h4{color:#ff9bb0}
+#skills .cols .card:nth-child(2n) h4::before{background:#ff5478;box-shadow:0 0 12px #ff547899}
+#skills .cols .card p{margin:0;color:#d6d8e6;font-size:.94rem;line-height:1.75}
+#skills .cols .card:hover{border-color:#63e6ff9c;box-shadow:0 18px 38px #0006,0 0 24px #38d9ff12;background:linear-gradient(135deg,#142a3a 0%,#171722 58%,#26172f 100%)}
+
+/* Achievements: editorial award cards with alternating entrance directions */
+#ach .ach{align-items:stretch;gap:16px}
+#ach .ach .card{
+  position:relative;isolation:isolate;overflow:hidden;min-height:205px;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding:26px 23px 24px;border:1px solid #ffffff20;border-radius:20px;
+  background:linear-gradient(150deg,#292033 0%,#17151f 58%,#101015 100%);
+  box-shadow:0 16px 36px #0004;
+  transition:opacity .8s ease,transform .8s cubic-bezier(.18,.78,.25,1),border-color .3s,box-shadow .3s;
+}
+#ach .ach .card:nth-child(1){border-top:3px solid #ffc857;background:radial-gradient(ellipse at 100% 0%,#ffbd3d20,transparent 50%),linear-gradient(150deg,#30251c,#17151f 62%)}
+#ach .ach .card:nth-child(2){border-top:3px solid #a78bfa;background:radial-gradient(ellipse at 100% 0%,#a78bfa20,transparent 50%),linear-gradient(150deg,#29213c,#17151f 62%)}
+#ach .ach .card:nth-child(3){border-top:3px solid #38d9c5;background:radial-gradient(ellipse at 100% 0%,#38d9c51a,transparent 50%),linear-gradient(150deg,#18302f,#17151f 62%)}
+#ach .ach .card:nth-child(odd){opacity:0;transform:translateX(-82px) rotate(-1.2deg)}
+#ach .ach .card:nth-child(even){opacity:0;transform:translateX(82px) rotate(1.2deg)}
+#ach .ach .card.rv.in{opacity:1;transform:translateX(0) rotate(0)}
+#ach .ach .card::after{content:"";position:absolute;z-index:-1;width:130px;height:130px;right:-48px;top:-52px;border:1px solid #ffffff12;border-radius:50%;box-shadow:0 0 0 14px #ffffff04,0 0 0 30px #ffffff03;pointer-events:none}
+#ach .ach .card h4{font-size:1.02rem;line-height:1.45;margin:0 0 14px;color:#fff}
+#ach .ach .card p{font-size:.92rem;line-height:1.75;color:#c9c9d7;margin:0}
+#ach .ach .card:hover{transform:translateY(-6px)!important;border-color:#ffffff55;box-shadow:0 24px 44px #0007}
+#ach .ach .card:nth-child(1):hover{box-shadow:0 24px 44px #0007,0 0 26px #ffc85712}
+#ach .ach .card:nth-child(2):hover{box-shadow:0 24px 44px #0007,0 0 26px #a78bfa18}
+#ach .ach .card:nth-child(3):hover{box-shadow:0 24px 44px #0007,0 0 26px #38d9c512}
+
+@media(max-width:760px){
+  #skills .cols{gap:11px}
+  #skills .cols .card{min-height:0;padding:19px 17px}
+  #skills .cols .card:nth-child(odd){transform:translateX(-34px)}
+  #skills .cols .card:nth-child(even){transform:translateX(34px)}
+  #skills .cols .card.rv.in{transform:translateX(0)}
+  #ach .ach{gap:12px}
+  #ach .ach .card{min-height:0;padding:22px 19px}
+  #ach .ach .card:nth-child(odd){transform:translateX(-42px)}
+  #ach .ach .card:nth-child(even){transform:translateX(42px)}
+  #ach .ach .card.rv.in{transform:translateX(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  #skills .cols .card,#skills .cols .card:nth-child(odd),#skills .cols .card:nth-child(even),
+  #skills .cols .card.rv.in,#ach .ach .card,#ach .ach .card:nth-child(odd),
+  #ach .ach .card:nth-child(even),#ach .ach .card.rv.in{opacity:1;transform:none;transition:none}
+}
+
 </style>
 </head>
 <body>
