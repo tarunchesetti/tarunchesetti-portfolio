@@ -315,6 +315,30 @@ header.hero#top .lead{margin:12px 0 18px;line-height:1.7}
   .cta-top .github-banner-mobile{display:inline-flex;align-items:center}
 }
 
+
+/* Tighter vertical rhythm and colorful experience cards */
+.cta-top{padding-bottom:0}
+header.hero#top{min-height:auto;padding-top:22px;padding-bottom:38px;align-content:start}
+header.hero#top>.spotlight-card{margin-top:0}
+#exp .timeline{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:18px;align-items:stretch}
+#exp .item{position:relative;margin:0;padding:25px 23px 24px;border:1px solid #ffffff20;border-radius:18px;overflow:hidden;background:linear-gradient(145deg,#202033 0%,#15151c 65%);box-shadow:0 14px 34px #0004;transition:transform .3s,border-color .3s,box-shadow .3s}
+#exp .item:nth-child(3n+1){background:linear-gradient(145deg,#35202b 0%,#19151d 68%);border-top:3px solid #ff5964}
+#exp .item:nth-child(3n+2){background:linear-gradient(145deg,#172f3a 0%,#15151c 68%);border-top:3px solid #22d3ee}
+#exp .item:nth-child(3n){background:linear-gradient(145deg,#2d2445 0%,#15151c 68%);border-top:3px solid #a78bfa}
+#exp .item:hover{transform:translateY(-5px);border-color:#ffffff45;box-shadow:0 22px 44px #0007}
+#exp .item::before{left:auto;right:18px;top:18px;width:9px;height:9px;box-shadow:0 0 0 5px #ffffff0c}
+#exp .item h3{font-size:1.08rem;line-height:1.4;padding-right:10px}
+#exp .item em{display:block;margin:8px 0 14px;color:#d0cfe0}
+#exp .item ul{padding-left:18px;margin-top:12px}
+#exp .item li{padding-left:2px;margin-bottom:9px;color:#d4d4df;font-size:.9rem}
+@media(max-width:760px){
+  .cta-top{padding-top:calc(70px + env(safe-area-inset-top,0px))}
+  header.hero#top{padding-top:16px;padding-bottom:26px}
+  header.hero#top>.spotlight-card{gap:18px}
+  #exp .timeline{grid-template-columns:minmax(0,1fr);gap:14px}
+  #exp .item{padding:22px 19px}
+}
+
 </style>
 </head>
 <body>
