@@ -293,6 +293,28 @@ header.hero#top .btn{padding:12px 22px}
 @media(max-width:760px){header.hero#top{min-height:auto;padding:105px 5vw 55px}header.hero#top>.spotlight-card{grid-template-columns:minmax(0,1fr);gap:24px;padding:26px 22px}header.hero#top>.spotlight-card>.avatar{grid-column:1;grid-row:auto;justify-self:start;width:140px;margin:0 0 4px}header.hero#top h1{font-size:clamp(2.8rem,13vw,4.8rem)}header.hero#top .lead{margin:14px 0 22px}header.hero#top .btns{gap:10px}header.hero#top .btn{padding:11px 16px}}
 @media(prefers-reduced-motion:reduce){header.hero#top .avatar,header.hero#top .avatar::before,header.hero#top .avatar::after{animation:none}}
 
+
+/* Tighter rhythm between portfolio components */
+section{padding-top:60px;padding-bottom:60px}
+h2{margin-bottom:20px}
+.stats,.cols,.ach,.stream-grid{gap:12px}
+.cols{margin-top:18px}
+.row{column-gap:12px;padding:6px 0 2px}
+.poster{margin-bottom:12px}
+.showcase-subheading{margin:30px 0 14px}
+.stream-showcase{margin-top:18px}
+#mobile .mob-vis{margin-bottom:26px}
+#mobile .showcase-links{margin:16px 0 26px}
+header.hero#top>.spotlight-card{row-gap:12px}
+header.hero#top .lead{margin:12px 0 18px;line-height:1.7}
+.github-mobile{display:none}
+@media(max-width:760px){
+  header.hero#top>.spotlight-card{gap:16px}
+  header.hero#top .btns{gap:8px}
+  header.hero#top .btn{padding:10px 13px}
+  header.hero#top .github-mobile{display:inline-flex;align-items:center}
+}
+
 </style>
 </head>
 <body>
@@ -309,7 +331,7 @@ header.hero#top .btn{padding:12px 22px}
 <h1>Chesetti<br><span>Tarun</span></h1>
 <div class="role">Senior Software Engineer · <b id="typed"></b><span class="caret"></span></div>
 <p class="lead" id="lead">4+ years building high-scale frontends for the <mark>Sling TV</mark> OTT platform serving <mark>millions of users</mark>. Modular UI architecture, <mark>performance</mark>, <mark>real-time data</mark> and <mark>AI-driven workflows</mark>.</p>
-<div class="btns"><a class="btn p" href="#mobile">▶ Watch my work</a><a class="btn s" id="resume" href="Tarun_Chesetti_Resume.pdf" download>⬇ Resume</a></div>
+<div class="btns"><a class="btn p" href="#mobile">▶ Watch my work</a><a class="btn s" id="resume" href="Tarun_Chesetti_Resume.pdf" download>⬇ Resume</a><a class="btn s github-mobile" href="https://github.com/tarunchesetti" target="_blank" rel="noopener">GitHub ↗</a></div>
 
 </div>
 </header>
